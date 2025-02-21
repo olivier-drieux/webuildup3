@@ -6,7 +6,7 @@ const mantineTheme = createTheme({
         primary: generateColors('#ff7900'),
         secondary: generateColors('#0086FF'),
     },
-    primaryColor: 'secondary',
+    primaryColor: 'primary',
 })
 
 export default mantineTheme

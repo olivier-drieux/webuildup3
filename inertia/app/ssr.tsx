@@ -2,7 +2,8 @@ import { SharedProps } from '@adonisjs/inertia/types'
 import { createInertiaApp } from '@inertiajs/react'
 import { MantineProvider } from '@mantine/core'
 import ReactDOMServer from 'react-dom/server'
-import AppLayout from '~/layouts/app-layout'
+import AppLayout from '~/layouts/app-layout/app-layout'
+import mantineTheme from '~/lib/mantine_theme'
 
 export default function render(page: any) {
     return createInertiaApp({
@@ -21,7 +22,7 @@ export default function render(page: any) {
             return page
         },
         setup: ({ App, props }) => (
-            <MantineProvider>
+            <MantineProvider theme={mantineTheme}>
                 <App {...props} />
             </MantineProvider>
         ),

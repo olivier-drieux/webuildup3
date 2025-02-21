@@ -1,0 +1,3 @@
+.user {
+    color: light-dark(var(--mantine-color-black), var(--mantine-color-dark-0));
+}

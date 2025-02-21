@@ -3,14 +3,14 @@
 /// <reference path="../../config/auth.ts" />
 
 import { resolvePageComponent } from '@adonisjs/inertia/helpers'
-import { createInertiaApp } from '@inertiajs/react'
-import { hydrateRoot } from 'react-dom/client'
-import { MantineProvider } from '@mantine/core'
-import '../css/app.css'
-import '@mantine/core/styles.css'
-import AppLayout from '~/layouts/app-layout'
 import { SharedProps } from '@adonisjs/inertia/types'
+import { createInertiaApp } from '@inertiajs/react'
+import { MantineProvider } from '@mantine/core'
+import '@mantine/core/styles.css'
+import { hydrateRoot } from 'react-dom/client'
+import AppLayout from '~/layouts/app-layout/app-layout'
 import mantineTheme from '~/lib/mantine_theme'
+import '../css/app.css'
 
 const appName = import.meta.env.VITE_APP_NAME || 'Webuild Up'
 

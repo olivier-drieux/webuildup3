@@ -22,7 +22,7 @@ export default function Login(props: SharedProps) {
             >
                 <TextInput
                     label="Identifiant (email ou pseudo)"
-                    placeholder="j.dupont"
+                    placeholder="j.dupont ou j.dupont@mail.fr"
                     size="md"
                     error={form.errors.identifier}
                     value={form.data.identifier}
