@@ -1,5 +1,6 @@
 import { SharedProps } from '@adonisjs/inertia/types'
 import { Head, Link, useForm } from '@inertiajs/react'
+import { Button } from '@mantine/core'
 
 export default function Register(props: SharedProps) {
     const form = useForm({
@@ -11,9 +12,9 @@ export default function Register(props: SharedProps) {
     return (
         <>
             <Head title="Register" />
-            <Link href="/login" replace className="text-blue-500 hover:underline">
+            <Button component={Link} href="/login" replace>
                 Login
-            </Link>
+            </Button>
         </>
     )
 }

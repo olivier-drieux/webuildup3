@@ -10,6 +10,7 @@ import '../css/app.css'
 import '@mantine/core/styles.css'
 import AppLayout from '~/layouts/app-layout'
 import { SharedProps } from '@adonisjs/inertia/types'
+import mantineTheme from '~/lib/mantine_theme'
 
 const appName = import.meta.env.VITE_APP_NAME || 'Webuild Up'
 
@@ -36,7 +37,7 @@ createInertiaApp({
     setup({ el, App, props }) {
         hydrateRoot(
             el,
-            <MantineProvider>
+            <MantineProvider theme={mantineTheme}>
                 <App {...props} />
             </MantineProvider>
         )
