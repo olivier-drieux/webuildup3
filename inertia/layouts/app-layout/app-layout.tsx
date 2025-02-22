@@ -1,5 +1,5 @@
 import { SharedProps } from '@adonisjs/inertia/types'
-import { Link } from '@inertiajs/react'
+import { Link, usePage } from '@inertiajs/react'
 import {
     AppShell,
     AppShellHeader,
@@ -27,6 +27,8 @@ import classes from './app-layout.module.css'
 export default function AppLayout(props: PropsWithChildren<SharedProps>) {
     const [opened, { toggle }] = useDisclosure()
 
+    const page = usePage()
+
     return (
         <MantineProvider>
             <AppShell
@@ -47,21 +49,25 @@ export default function AppLayout(props: PropsWithChildren<SharedProps>) {
                                 {import.meta.env.VITE_APP_NAME}
                             </Text>
                         </Group>
-                        <ProjectStepper />
+                        {page.url.endsWith('projects/create') && <ProjectStepper />}
                     </Group>
                 </AppShellHeader>
                 <AppShellNavbar p="md">
-                    <UnstyledButton className={classes.navItem} component={Link} href="/">
+                    <UnstyledButton className={classes.navItem} component={Link} href="/projects">
                         <Group justify="space-between" gap={0}>
                             <Box style={{ display: 'flex', alignItems: 'center' }}>
                                 <ThemeIcon variant="light" size={30}>
                                     <LuLayoutDashboard size={18} />
                                 </ThemeIcon>
-                                <Box ml="md">{`Tableau de bord`}</Box>
+                                <Box ml="md">{`Mes projets`}</Box>
                             </Box>
                         </Group>
                     </UnstyledButton>
-                    <UnstyledButton className={classes.navItem} component={Link} href="/create">
+                    <UnstyledButton
+                        className={classes.navItem}
+                        component={Link}
+                        href="/projects/create"
+                    >
                         <Group justify="space-between" gap={0}>
                             <Box style={{ display: 'flex', alignItems: 'center' }}>
                                 <ThemeIcon variant="light" size={30}>

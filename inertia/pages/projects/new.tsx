@@ -1,14 +1,18 @@
+import ProjectsController from '#controllers/projects_controller'
+import { InferPageProps } from '@adonisjs/inertia/types'
 import { Head } from '@inertiajs/react'
 import { Button, Center, Group, Stack, Title } from '@mantine/core'
 import { useProjectStore } from '~/store/project_store'
 
-export default function Home() {
+export default function Projects(props: InferPageProps<ProjectsController, 'create'>) {
     const step = useProjectStore((state) => state.projectState.step)
     const setStep = useProjectStore((state) => state.setStep)
 
+    console.log(props)
+
     return (
         <>
-            <Head title="Home" />
+            <Head title="Nouveau projet" />
             <Stack flex={1}>
                 <Center flex={1}>
                     {step === 0 && <Title>Contexte</Title>}

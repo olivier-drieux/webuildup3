@@ -3,7 +3,6 @@ import { createElement, ReactElement, useCallback, useEffect, useRef, useState }
 
 interface WhenVisibleProps {
     children: ReactElement | number | string
-    fallback: ReactElement | number | string
     data?: string | string[]
     params?: ReloadOptions
     buffer?: number
@@ -16,18 +15,9 @@ interface WhenVisibleProps {
  * @see https://github.com/inertiajs/inertia/pull/2048
  *
  */
-const WhenVisible = ({
-    children,
-    data,
-    params,
-    buffer,
-    as,
-    always,
-    fallback,
-}: WhenVisibleProps) => {
+const WhenVisible = ({ children, data, params, buffer, as, always }: WhenVisibleProps) => {
     always = always ?? false
     as = as ?? 'div'
-    fallback = fallback ?? null
 
     const [loaded, setLoaded] = useState(false)
     const hasFetched = useRef<boolean>(false)
@@ -108,7 +98,7 @@ const WhenVisible = ({
                 props: null,
                 ref,
             },
-            loaded ? children : fallback
+            loaded ? children : null
         )
     }
 
