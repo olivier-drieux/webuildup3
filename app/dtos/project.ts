@@ -7,10 +7,11 @@ export default class ProjectDto extends BaseModelDto {
     declare createdAt: string
     declare updatedAt: string
 
-    constructor(project?: Project) {
+    constructor(project: Project) {
         super()
 
         if (!project) return
+
         this.id = project.id
         this.name = project.name
         this.createdAt = project.createdAt.toISO()!

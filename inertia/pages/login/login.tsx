@@ -3,7 +3,7 @@ import { Head, useForm } from '@inertiajs/react'
 import { Button, Checkbox, PasswordInput, TextInput } from '@mantine/core'
 import AuthLayout from '~/layouts/auth-layout/auth-layout'
 
-export default function Login(props: SharedProps) {
+export default function Login() {
     const form = useForm({
         identifier: '',
         password: '',
@@ -21,6 +21,7 @@ export default function Login(props: SharedProps) {
                 }}
             >
                 <TextInput
+                    autoFocus
                     label="Identifiant (email ou pseudo)"
                     placeholder="j.dupont ou j.dupont@mail.fr"
                     size="md"

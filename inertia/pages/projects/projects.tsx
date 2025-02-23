@@ -16,11 +16,10 @@ import {
     TableTr,
     Title,
 } from '@mantine/core'
-import dayjs from 'dayjs'
+import { DateTime } from 'luxon'
 import WhenVisible from '~/components/when-visible/when-visible'
 
 export default function Projects(props: InferPageProps<ProjectsController, 'index'>) {
-    console.log(props)
     return (
         <>
             <Head title="Liste des projets" />
@@ -31,8 +30,8 @@ export default function Projects(props: InferPageProps<ProjectsController, 'inde
                 </Button>
             </Group>
             <Divider mt="md" mb="xl" />
-            <TableScrollContainer minWidth={500}>
-                <Table highlightOnHover withTableBorder stickyHeader style={{ overflow: 'auto' }}>
+            <TableScrollContainer minWidth={550}>
+                <Table highlightOnHover withTableBorder stickyHeader>
                     <TableThead>
                         <TableTr>
                             <TableTh>Nom</TableTh>
@@ -41,25 +40,26 @@ export default function Projects(props: InferPageProps<ProjectsController, 'inde
                             <TableTh>Date de dernière mise à jour</TableTh>
                         </TableTr>
                     </TableThead>
-                    <TableTbody style={{ overflow: 'auto' }}>
-                        {props.projects?.map((project) => (
+                    <TableTbody>
+                        {props.projects.map((project) => (
                             <TableTr key={project.id}>
                                 <TableTd>{project.name}</TableTd>
                                 <TableTd>{`-`}</TableTd>
-                                <TableTd>
-                                    {dayjs(project.createdAt).format('DD/MM/YYYY H:m:s')}
+                                <TableTd suppressHydrationWarning>
+                                    {DateTime.fromISO(project.createdAt).toFormat('D T')}
                                 </TableTd>
-                                <TableTd>
-                                    {dayjs(project.updatedAt).format('DD/MM/YYYY H:m:s')}
+                                <TableTd suppressHydrationWarning>
+                                    {DateTime.fromISO(project.updatedAt).toFormat('D T')}
                                 </TableTd>
                             </TableTr>
                         ))}
                         <TableTr>
-                            <TableTh colSpan={4}>
+                            <TableTd colSpan={4}>
                                 <WhenVisible
                                     always={null !== props.meta.nextPageUrl}
                                     buffer={500}
                                     params={{
+                                        preserveUrl: true,
                                         only: ['projects', 'meta'],
                                         data: { page: (props.meta.currentPage ?? 1) + 1 },
                                     }}
@@ -68,7 +68,7 @@ export default function Projects(props: InferPageProps<ProjectsController, 'inde
                                         <Loader size="sm" />
                                     </Center>
                                 </WhenVisible>
-                            </TableTh>
+                            </TableTd>
                         </TableTr>
                     </TableTbody>
                 </Table>
