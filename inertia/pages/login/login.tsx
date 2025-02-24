@@ -1,7 +1,5 @@
-import { SharedProps } from '@adonisjs/inertia/types'
 import { Head, useForm } from '@inertiajs/react'
 import { Button, Checkbox, PasswordInput, TextInput } from '@mantine/core'
-import AuthLayout from '~/layouts/auth-layout/auth-layout'
 
 export default function Login() {
     const form = useForm({
@@ -46,7 +44,3 @@ export default function Login() {
         </>
     )
 }
-
-Login.layout = (page: React.ReactElement) => (
-    <AuthLayout {...(page.props as SharedProps)}>{page}</AuthLayout>
-)

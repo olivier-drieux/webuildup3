@@ -1,5 +1,5 @@
 import { SharedProps } from '@adonisjs/inertia/types'
-import { Link, usePage } from '@inertiajs/react'
+import { Link } from '@inertiajs/react'
 import {
     AppShell,
     AppShellHeader,
@@ -11,23 +11,17 @@ import {
     Group,
     Image,
     MantineProvider,
-    Paper,
-    Stack,
     Text,
     ThemeIcon,
     UnstyledButton,
 } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { PropsWithChildren } from 'react'
-import { LuFolderPlus, LuLayoutDashboard, LuLogOut } from 'react-icons/lu'
-import ProjectStepper from '~/components/project-stepper/project-stepper'
-import UserButton from '~/components/user-button/user-button'
+import { LuLayoutDashboard, LuLogOut } from 'react-icons/lu'
 import classes from './app-layout.module.css'
 
 export default function AppLayout(props: PropsWithChildren<SharedProps>) {
     const [opened, { toggle }] = useDisclosure()
-
-    const page = usePage()
 
     return (
         <MantineProvider>
@@ -49,37 +43,22 @@ export default function AppLayout(props: PropsWithChildren<SharedProps>) {
                                 {import.meta.env.VITE_APP_NAME}
                             </Text>
                         </Group>
-                        {page.url.endsWith('projects/create') && <ProjectStepper />}
                     </Group>
                 </AppShellHeader>
                 <AppShellNavbar p="md">
-                    <UnstyledButton className={classes.navItem} component={Link} href="/projects">
+                    <UnstyledButton className={classes.navItem} component={Link} href="/">
                         <Group justify="space-between" gap={0}>
                             <Box style={{ display: 'flex', alignItems: 'center' }}>
                                 <ThemeIcon variant="light" size={30}>
                                     <LuLayoutDashboard size={18} />
                                 </ThemeIcon>
-                                <Box ml="md">{`Mes projets`}</Box>
+                                <Box ml="md">{`Accueil`}</Box>
                             </Box>
                         </Group>
                     </UnstyledButton>
-                    <UnstyledButton
-                        className={classes.navItem}
-                        component={Link}
-                        href="/projects/create"
-                    >
-                        <Group justify="space-between" gap={0}>
-                            <Box style={{ display: 'flex', alignItems: 'center' }}>
-                                <ThemeIcon variant="light" size={30}>
-                                    <LuFolderPlus size={18} />
-                                </ThemeIcon>
-                                <Box ml="md">{`Créer un projet`}</Box>
-                            </Box>
-                        </Group>
-                    </UnstyledButton>
-                    <Paper component={Stack} withBorder p="md" mt="auto">
-                        <UserButton user={props.user!} />
+                    {props.user && (
                         <Button
+                            mt="auto"
                             leftSection={<LuLogOut size={14} />}
                             component={Link}
                             href="/logout"
@@ -88,7 +67,7 @@ export default function AppLayout(props: PropsWithChildren<SharedProps>) {
                         >
                             {`Se déconnecter`}
                         </Button>
-                    </Paper>
+                    )}
                 </AppShellNavbar>
                 <AppShellMain className={classes.main}>{props.children}</AppShellMain>
             </AppShell>
