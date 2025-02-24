@@ -5,7 +5,7 @@ import type { HttpContext } from '@adonisjs/core/http'
 
 export default class LoginController {
     async show({ inertia }: HttpContext) {
-        return inertia.render('login/index')
+        return inertia.render('login/login')
     }
 
     @inject()
