@@ -25,7 +25,7 @@ export default function Projects(props: InferPageProps<ProjectsController, 'inde
             <Head title="Liste des projets" />
             <Group w="100%" justify="space-between">
                 <Title>{`Liste des projets`}</Title>
-                <Button component={Link} href="/projects/create">
+                <Button component={Link} href="/projects/new">
                     Créer un projet
                 </Button>
             </Group>

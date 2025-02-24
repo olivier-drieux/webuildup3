@@ -20,7 +20,7 @@ import {
 import { useDisclosure } from '@mantine/hooks'
 import { PropsWithChildren } from 'react'
 import { LuFolderPlus, LuLayoutDashboard, LuLogOut } from 'react-icons/lu'
-import ProjectStepper from '~/components/project-stepper/project-stepper'
+import ProjectStepperHeader from '~/components/project-stepper/project-stepper-header'
 import UserButton from '~/components/user-button/user-button'
 import classes from './app-layout.module.css'
 
@@ -49,7 +49,7 @@ export default function AppLayout(props: PropsWithChildren<SharedProps>) {
                                 {import.meta.env.VITE_APP_NAME}
                             </Text>
                         </Group>
-                        {page.url.endsWith('projects/create') && <ProjectStepper />}
+                        {page.url.startsWith('/projects/new') && <ProjectStepperHeader />}
                     </Group>
                 </AppShellHeader>
                 <AppShellNavbar p="md">

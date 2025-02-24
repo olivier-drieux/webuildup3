@@ -16,6 +16,7 @@
     "imports": {
         "#actions/*": "./app/actions/*.js",
         "#dtos/*": "./app/dtos/*.js",
+        "#interfaces/*": "./app/interfaces/*.js",
         "#controllers/*": "./app/controllers/*.js",
         "#exceptions/*": "./app/exceptions/*.js",
         "#models/*": "./app/models/*.js",
@@ -85,8 +86,7 @@
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "react-icons": "^5.5.0",
-        "reflect-metadata": "^0.2.2",
-        "zustand": "^5.0.3"
+        "reflect-metadata": "^0.2.2"
     },
     "hotHook": {
         "boundaries": [
